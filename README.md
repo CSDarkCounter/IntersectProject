@@ -1,4 +1,12 @@
-# 求几何对象交点
+# 北航软工个人项目作业：求几何对象交点
+
+| 项目 | 内容 |
+|  ----| ---- |
+|这个作业属于哪个课程|[2020春季计算机学院软件工程(罗杰 任健)](https://edu.cnblogs.com/campus/buaa/BUAA_SE_2020_LJ) |
+|这个作业的要求在哪里|[个人项目作业](https://edu.cnblogs.com/campus/buaa/BUAA_SE_2020_LJ/homework/10429)|
+|我在这个课程的目标是|学习软件工程相关知识，提高自己团队项目的开发能力|
+|教学班级|005|
+|项目地址|[IntersectProject](https://github.com/CSDarkCounter/IntersectProject.git)|
 
 ## 使用方法：
 命令行输入intersect.exe -i input.txt -o output.txt
