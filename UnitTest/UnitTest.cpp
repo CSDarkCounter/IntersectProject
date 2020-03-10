@@ -19,8 +19,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = c;
 			point.second = c;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod2)
@@ -30,8 +30,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = -1;
 			point.second = 7;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod3)
@@ -41,8 +41,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = (double)(15) / 4;
 			point.second = (double)(31) / 4;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod4)
@@ -52,8 +52,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = 0;
 			point.second = 1;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod5)
@@ -63,8 +63,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = 25;
 			point.second = 475;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod6)
@@ -74,8 +74,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = 0;
 			point.second = 0;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod7)
@@ -85,8 +85,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = 7;
 			point.second = 2;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod8)
@@ -96,8 +96,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = -1;
 			point.second = -1;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod9)
@@ -107,8 +107,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = -1;
 			point.second = -1;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 		TEST_METHOD(TestMethod10)
@@ -118,8 +118,8 @@ namespace UnitTest
 			pair<double, double> point;
 			point.first = -(double)(2)/3;
 			point.second = -(double)(5)/3;
-			Assert::AreEqual(line1.calintpoint1(line2).first, point.first);
-			Assert::AreEqual(line1.calintpoint1(line2).second, point.second);
+			Assert::AreEqual(line1.calintpoint1(line2).x, point.first);
+			Assert::AreEqual(line1.calintpoint1(line2).y, point.second);
 		}
 
 
