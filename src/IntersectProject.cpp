@@ -7,8 +7,28 @@
 #include <vector>
 #include <set>  
 #include <math.h>
+
 using namespace std;
 
+#define eps 1e-12
+
+class Point {
+public:
+	double x, y;
+	Point(double a, double b) {
+		x = a;
+		y = b;
+	}
+	bool operator<(const Point& p) const {
+		if (fabs(x - p.x) < eps && fabs(y - p.y) < eps)
+			return false;
+		if (fabs(x - p.x) >= eps)
+			return x < p.x;
+		else
+			return y < p.y;
+	}
+
+};
 
 class Line {
 public:
@@ -16,7 +36,7 @@ public:
 	double A, B, C;
 	Line(double x1, double y1, double x2, double y2);
 	Line(double a, double b, double c);
-	pair<double, double> calintpoint1(Line line1);
+	Point calintpoint1(Line line1);
 };
 
 class Circle {
@@ -33,7 +53,7 @@ Circle::Circle(double x, double y, double r) {
 
 vector<Line> linevec;
 vector<Circle> circlevec;
-set<pair<double, double>> pointset;
+set<Point> pointset;
 
 
 Line::Line(double x1, double y1, double x2, double y2) {
@@ -54,36 +74,30 @@ double getdistance(Line line, Circle circle) {//圆心到直线距离
 	return fabs(tmp1 / sqrt(tmp2));
 }
 
-pair<double, double> Line::calintpoint1(Line line1) {//line and line
+Point Line::calintpoint1(Line line1) {//line and line
 	double tmp1 = B * line1.C - line1.B * C;
 	double tmp2 = A * line1.B - line1.A * B;
 	double tmp3 = line1.A * C - A * line1.C;
 	double x = tmp1 / tmp2;
 	double y = tmp3 / tmp2;//直线交点坐标公式
-	pair<double, double> point;
-	point.first = x;
-	point.second = y;
+	Point point(x, y);
 	return point;
 }
 
 void calintpoint2(Line line, Circle circle, double dis) {//line and circle
 	Line line2(line.B, -line.A, line.A * circle.y0 - line.B * circle.x0);//过圆心的垂线
-	pair<double, double> point = line.calintpoint1(line2);//垂足
+	Point point = line.calintpoint1(line2);//垂足
 	pair<double, double> e;//定义直线的单位向量
 	double gougu = sqrt(circle.r0 * circle.r0 - dis * dis);
 	e.first = (double)line.B / sqrt(line.A * line.A + line.B * line.B);
 	e.second = -(double)line.A / sqrt(line.A * line.A + line.B * line.B);//求直线的单位向量
-	pair<double, double> point1;
-	point1.first = point.first + e.first * gougu;
-	point1.second = point.second + e.second * gougu;//计算交点坐标
+	Point point1(point.x + e.first * gougu, point.y + e.second * gougu);
 	pointset.insert(point1);
 
 	if (dis == circle.r0)//若相切则只有一个交点
 		return;
 
-	pair<double, double> point2;
-	point2.first = point.first - e.first * gougu;
-	point2.second = point.second - e.second * gougu;
+	Point point2(point.x - e.first * gougu, point.y - e.second * gougu);
 	pointset.insert(point2);
 }
 
@@ -96,7 +110,7 @@ void intersectforline(Line line1) {
 			;
 		}
 		else {
-			pair<double, double> point = line1.calintpoint1(*iter1);
+			Point point = line1.calintpoint1(*iter1);
 			pointset.insert(point);
 		}
 	}
