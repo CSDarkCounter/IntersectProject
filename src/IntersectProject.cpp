@@ -17,8 +17,6 @@ public:
 	Line(double x1, double y1, double x2, double y2);
 	Line(double a, double b, double c);
 	pair<double, double> calintpoint1(Line line1);
-
-	
 };
 
 class Circle {
@@ -61,7 +59,7 @@ pair<double, double> Line::calintpoint1(Line line1) {//line and line
 	double tmp2 = A * line1.B - line1.A * B;
 	double tmp3 = line1.A * C - A * line1.C;
 	double x = tmp1 / tmp2;
-	double y = tmp3 / tmp2;
+	double y = tmp3 / tmp2;//直线交点坐标公式
 	pair<double, double> point;
 	point.first = x;
 	point.second = y;
@@ -71,16 +69,16 @@ pair<double, double> Line::calintpoint1(Line line1) {//line and line
 void calintpoint2(Line line, Circle circle, double dis) {//line and circle
 	Line line2(line.B, -line.A, line.A * circle.y0 - line.B * circle.x0);//过圆心的垂线
 	pair<double, double> point = line.calintpoint1(line2);//垂足
-	pair<double, double> e;//单位向量
+	pair<double, double> e;//定义直线的单位向量
 	double gougu = sqrt(circle.r0 * circle.r0 - dis * dis);
 	e.first = (double)line.B / sqrt(line.A * line.A + line.B * line.B);
-	e.second = -(double)line.A / sqrt(line.A * line.A + line.B * line.B);
+	e.second = -(double)line.A / sqrt(line.A * line.A + line.B * line.B);//求直线的单位向量
 	pair<double, double> point1;
 	point1.first = point.first + e.first * gougu;
-	point1.second = point.second + e.second * gougu;
+	point1.second = point.second + e.second * gougu;//计算交点坐标
 	pointset.insert(point1);
 
-	if (dis == circle.r0)
+	if (dis == circle.r0)//若相切则只有一个交点
 		return;
 
 	pair<double, double> point2;
@@ -107,7 +105,7 @@ void intersectforline(Line line1) {
 	for (iter2 = circlevec.begin(); iter2 != circlevec.end(); ++iter2)
 	{
 		double dis = getdistance(line1, *iter2);
-		if (dis > (*iter2).r0) {
+		if (dis > (*iter2).r0) {//直线与圆相离
 			continue;
 		}
 		else {
@@ -123,7 +121,7 @@ void intersectforcircle(Circle circle1) {
 	for (iter1 = linevec.begin(); iter1 != linevec.end(); ++iter1)
 	{
 		double dis = getdistance(*iter1, circle1);
-		if (dis > circle1.r0) {
+		if (dis > circle1.r0) {//直线与圆相离
 			continue;
 		}
 		else {
@@ -137,11 +135,13 @@ void intersectforcircle(Circle circle1) {
 		double d = sqrt((circle1.x0 - (*iter2).x0) * (circle1.x0 - (*iter2).x0) + (circle1.y0 - (*iter2).y0) * (circle1.y0 - (*iter2).y0));
 		if (d == 0 || d < fabs(circle1.r0 - (*iter2).r0) || d >(circle1.r0 + (*iter2).r0)) {
 			continue;
-		}
+		}//判断两圆是否有交点
+
+		//求出过两圆交点的直线
 		Line line1(2 * ((*iter2).x0 - circle1.x0), 2 * ((*iter2).y0 - circle1.y0), circle1.x0 * circle1.x0 + circle1.y0 * circle1.y0 - 
 			(*iter2).x0 * (*iter2).x0 - (*iter2).y0 * (*iter2).y0 + (*iter2).r0 * (*iter2).r0 - circle1.r0 * circle1.r0);
 		double dis = getdistance(line1, circle1);
-		calintpoint2(line1, circle1, dis);
+		calintpoint2(line1, circle1, dis);//求出两圆交点
 	}
 	circlevec.push_back(circle1);
 }
